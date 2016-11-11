@@ -193,7 +193,7 @@ def bfs(g,start,tobecheckId,level_max):
                     vertQueue.enqueue(nbr)
 
                     # update g if nbr is not inside the original network of start
-                    if not (nbr in nbr_level):
+                    if not (nbr.getId() in nbr_level):
                         g.addEdge(start.getId(),nbr.getId(),nbr.getDistance())
                         g.addEdge(nbr.getId(),start.getId(),nbr.getDistance())
                     
@@ -260,7 +260,7 @@ for i in range(0,len(level_max_array)):
             # Apply BFS to determine if the two people are within level_max degree network  
             g_train,flag_trusted[j] = bfs(g_train, g_train.vertices[id1_test[j]], id2_test[j], level_max)
         
-            outfile.write(flag_trusted[j] + "\n")               
+        outfile.write(flag_trusted[j] + "\n")               
                    
     outfile.close()    
         
